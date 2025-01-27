@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walentynkowa Strona</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffe4e1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 3rem;
+        }
+
+        .question {
+            margin: 20px auto;
+            font-size: 1.5rem;
+            color: #ff1493;
+        }
+
+        .image-container {
+            margin: 20px auto;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            animation: blink 1.5s infinite, jump 1s infinite;
+            transition: transform 0.2s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        #no-btn {
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                background-color: #ff69b4;
+            }
+            50% {
+                background-color: #ff80bf;
+            }
+        }
+
+        @keyframes jump {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .cat {
+            margin-top: 30px;
+        }
+
+        .cat img {
+            width: 100%;
+            max-width: 300px;
+            animation: bounce 2s infinite;
+        }
+
+        .invitation {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ff1493;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .question {
+                font-size: 1.2rem;
+            }
+
+            .button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            #no-btn {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .invitation {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Hej, kochanie! 🐾</h1>
+    <p class="question">Czy zostaniesz moją Walentynką? ❤️</p>
+
+    <div class="image-container" id="sus-kotek">
+        <img src="https://i.pinimg.com/736x/03/07/6e/03076e1318f9b8eedc8733509f469e86.jpg" alt="Uroczy kotek">
+    </div>
+
+    <div class="button-container">
+        <button class="button" onclick="showLove()">Tak!</button>
+        <button id="no-btn">Nie...</button>
+    </div>
+
+    <div class="cat" id="cat-container" style="display: none;">
+        <img src="https://static.wixstatic.com/media/182b72_b482f2b7c7b646b5b2ade7b468b17c7d~mv2.jpg/v1/fill/w_744,h_558,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/182b72_b482f2b7c7b646b5b2ade7b468b17c7d~mv2.jpg" alt="Kotek">
+        <div class="invitation">
+            <p>Z tej okazji zapraszam Cię na romantyczny pobyt pod adresem:</p>
+            <p><strong>ul. Karola Taylora 4/122, 02-495 Warszawa</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+
+        // Funkcja na uciekający przycisk "Nie"
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+
+        // Funkcja wyświetlająca kotka i zaproszenie po kliknięciu "Tak"
+        function showLove() {
+            document.querySelector('.question').textContent = "Jesteś moją Walentynką! ❤️";
+            document.querySelector('.button-container').style.display = 'none';
+            document.getElementById('cat-container').style.display = 'block';
+            document.getElementById('sus-kotek').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
